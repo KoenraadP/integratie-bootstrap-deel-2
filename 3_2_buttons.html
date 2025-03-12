@@ -88,22 +88,22 @@
     <!--################START HERE################-->
 
     <!-- BUTTONS -->
-    <button type="button">Primary</button>
-    <button type="button">Secondary</button>
-    <button type="button">Success</button>
-    <button type="button">Info</button>
-    <button type="button">Warning</button>
-    <button type="button">Danger</button>
-    <button type="button">Light</button>
-    <button type="button">Dark</button>
-    <button type="button">Link</button>
+    <button class="btn btn-primary" type="button">Primary</button>
+    <button class="btn btn-secondary" type="button">Secondary</button>
+    <button class="btn btn-success" type="button">Success</button>
+    <button class="btn btn-info" type="button">Info</button>
+    <button class="btn btn-warning" type="button">Warning</button>
+    <button class="btn btn-danger" type="button">Danger</button>
+    <button class="btn btn-light" type="button">Light</button>
+    <button class="btn btn-dark" type="button">Dark</button>
+    <button class="btn btn-link" type="button">Link</button>
 
     <br>
     <br>
 
     <!-- BUTTON TAGS/TYPES -->
     <form action="">
-      <a href="#" role="button">Link</a>
+      <a class="btn btn-primary" href="#" role="button">Link</a>
       <button type="submit">Button</button>
       <input type="submit" value="Submit">
       <input type="reset" value="Reset">
@@ -115,39 +115,51 @@
     <br>
 
     <!-- OUTLINE BUTTONS -->
-    <button type="button">Primary Outline</button>
-    <button type="button">Secondary Outline</button>
-    <button type="button">Success Outline</button>
-    <button type="button">Info Outline</button>
-    <button type="button">Warning Outline</button>
-    <button type="button">Danger Outline</button>
-    <button type="button">Light Outline</button>
-    <button type="button">Dark Outline</button>
+    <button class="btn btn-outline-primary" type="button">Primary Outline</button>
+    <button class="btn btn-outline-secondary" type="button">Secondary Outline</button>
+    <button class="btn btn-outline-success" type="button">Success Outline</button>
+    <button class="btn btn-outline-info" type="button">Info Outline</button>
+    <button class="btn btn-outline-warning" type="button">Warning Outline</button>
+    <button class="btn btn-outline-danger" type="button">Danger Outline</button>
+    <button class="btn btn-outline-light" type="button">Light Outline</button>
+    <button class="btn btn-outline-dark" type="button">Dark Outline</button>
 
     <br>
     <br>
 
     <!-- BUTTON SIZES -->
-    <button type="button">
+    <button class="btn btn-primary btn-lg" type="button">
       <i class="fa fa-user"></i> Large button</button>
-    <button type="button">Small button</button>
+    <button class="btn btn-warning btn-sm" type="button">Small button</button>
     <br>
     <br>
-    <button type="button">Block level button</button>
+    <div class="d-grid">
+      <button class="btn btn-primary" type="button">Block level button</button>
+    </div>
 
     <br>
     <br>
 
     <!-- STATES -->
-    <button type="button">Regular Button</button>
-    <button type="button">Active Button</button>
-    <button type="button">Disabled Button</button>
+    <button class="btn btn-danger" type="button">Regular Button</button>
+    <button class="btn btn-danger active" type="button">Active Button</button>
+    <button class="btn btn-danger disabled" type="button">Disabled Button</button>
 
     <!-- DISABLED AFTER CLICK -->
-    <button type="button" class="btn btn-danger">Disable</button>
+    <button id="test-disable" type="button" class="btn btn-danger">Disable</button>
+
+    <script>
+      // knop koppelen aan naam btn
+      const btn = document.getElementById("test-disable");
+      // bij klik...
+      btn.addEventListener("click",function(){
+        // class disabled toevoegen aan knop
+        btn.classList.add("disabled");
+      })
+    </script>
 
     <!-- TOGGLE STATE -->
-    <button type="button" class="btn btn-outline-warning">
+    <button data-bs-toggle="button" type="button" class="btn btn-outline-warning">
       Toggle State
     </button>
 
@@ -155,7 +167,7 @@
     <br>
 
     <!-- BUTTON GROUPS -->
-    <div>
+    <div class="btn-group">
       <button type="button" class="btn btn-primary">Left</button>
       <button type="button" class="btn btn-primary">Middle</button>
       <button type="button" class="btn btn-primary">Right</button>
@@ -164,19 +176,19 @@
     <br></br>
 
     <!-- BUTTON TOOLBAR -->
-    <div>
-      <div>
+    <div class="btn-toolbar">
+      <div class="btn-group">
         <button type="button" class="btn btn-primary">1</button>
         <button type="button" class="btn btn-primary">2</button>
         <button type="button" class="btn btn-primary">3</button>
         <button type="button" class="btn btn-primary">4</button>
       </div>
-      <div>
+      <div class="btn-group">
         <button type="button" class="btn btn-primary">5</button>
         <button type="button" class="btn btn-primary">6</button>
         <button type="button" class="btn btn-primary">7</button>
       </div>
-      <div>
+      <div class="btn-group">
         <button type="button" class="btn btn-primary">8</button>
       </div>
     </div>
@@ -185,7 +197,7 @@
     <br>
 
     <!-- VERTICAL GROUP -->
-    <div>
+    <div class="btn-group-vertical">
       <button type="button" class="btn btn-primary">Top</button>
       <button type="button" class="btn btn-primary">Middle</button>
       <button type="button" class="btn btn-primary">Bottom</button>
@@ -195,14 +207,14 @@
     <br>
 
     <!-- BUTTON DROPDOWNS -->
-    <div>
-      <button type="button" class="btn btn-primary">
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
         My Dropdown
       </button>
-      <ul>
-        <li><a href="#">Link One</a></li>
-        <li><a href="#">Link Two</a></li>
-        <li><a href="#">Link Three</a></li>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Link One</a></li>
+        <li><a class="dropdown-item" href="#">Link Two</a></li>
+        <li><a class="dropdown-item" href="#">Link Three</a></li>
       </ul>
     </div>
 
@@ -210,17 +222,18 @@
     <br>
 
     <!-- SPLIT DROPDOWNS -->
-    <div>
+    <div class="dropdown btn-group">
       <button type="button" class="btn btn-primary">My Button</button>
-      <button type="button" class="btn btn-primary dropdown-toggle">
+      <button type="button" class="btn btn-primary dropdown-toggle"
+      data-bs-toggle="dropdown">
         Toggle Dropdown
       </button>
-      <ul>
-        <li><a href="#">Link One</a></li>
-        <li><a href="#">Link Two</a></li>        
-        <li><a href="#">Link Three</a></li>
-        <div></div>
-        <li><a href="#">Link Four</a></li>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Link One</a></li>
+        <li><a class="dropdown-item" href="#">Link Two</a></li>
+        <li><a class="dropdown-item" href="#">Link Three</a></li>
+        <div class="dropdown-divider"></div>
+        <li><a class="dropdown-item" href="#">Link Four</a></li>
       </ul>
     </div>
 
