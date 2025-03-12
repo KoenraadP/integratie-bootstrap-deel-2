@@ -92,96 +92,175 @@
     <!--####################START HERE######################-->
 
     <!-- ALERTS -->
-    <div>
+    <div class="alert alert-primary">
       <strong>Primary</strong> Blog post added
     </div>
 
-    <div>
+    <div class="alert alert-secondary">
       <strong>Secondary</strong> Blog post added
     </div>
 
-    <div>
+    <div class="alert alert-success">
       <strong>Success</strong> Blog post added
     </div>
 
-    <div>
+    <div class="alert alert-danger">
       <strong>Danger</strong> Please check the log files
     </div>
 
-    <div>
+    <div class="alert alert-info">
       <strong>Info</strong> You have a new message
     </div>
 
-    <div>
+    <div class="alert alert-warning">
       <strong>Warning</strong> Please check the log files
     </div>
 
-    <div>
+    <div class="alert alert-light">
       <strong>Light</strong> Please check the log files
     </div>
 
-    <div>
+    <div class="alert alert-dark">
       <strong>Dark</strong> Please check the log files
     </div>
 
     <br><br>
 
     <!-- DISMISSABLE ALERT -->
-    <div>
-      <button type="button"></button>
+    <!-- de div krijgt enkele extra classes -->
+    <!-- de button krijgt class btn-close en een extra attribute data-bs-dismiss -->
+    <!-- voor data-bs-dismiss moet de bootstrap javascript gekoppeld staan -->
+    <div class="alert alert-primary alert-dismissible">
+      <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
       <strong>Dismissable</strong> Blog post added
     </div>
 
     <br>
     <br>
 
+    <div id="alert-div" class="alert alert-success alert-dismissible invisible">
+      <button class="btn-close" type="button" data-bs-dismiss="alert"></button>
+      <strong>Dismissable</strong> Blog post added
+    </div>
+
     <!-- SHOW AND DISMISS -->
-    <div id="alert"></div>
-    <button class="btn btn-primary" id="alertButton">Show alert</button>
-    
-    
+    <button class="btn btn-primary" id="alert-button">Show alert</button>
+
+    <!-- methode 1: hiermee kan je het wel tonen maar kun je het geen meerdere keren tonen -->
+    <!-- omdat het kruisje het element verwijdert -->
+    <script>
+      const btn = document.getElementById("alert-button");
+      const alertDiv = document.getElementById("alert-div")
+      btn.addEventListener("click", function () {
+        alertDiv.classList.remove("invisible");
+      })
+    </script>
+
+    <br><br>
+
+    <div id="alert-two"></div>
+    <button class="btn btn-warning" id="alert-button-two">Show alert</button>
+
+    <!-- methode 2, HTML code opbouwen in script zelf -->
+    <!-- de HTML code wordt geplaatst binnen de alert-two div die hier boven staat -->
+    <script>
+      const btn2 = document.getElementById("alert-button-two");
+      const alertDiv2 = document.getElementById("alert-two");
+      btn2.addEventListener("click", function () {
+        // volledig html blokje
+        const alertHTML = '<div id="alert-div" class="alert alert-success alert-dismissible"><button class="btn-close" type="button" data-bs-dismiss="alert"></button><strong>Dismissable</strong> Blog post added</div>'
+        // plaatsen binnen de <div id="alert-two"></div> tags
+        alertDiv2.innerHTML = alertHTML;
+      })
+    </script>
 
     <br><br>
 
     <!-- PROGRESS BARS -->
-    <div>
-      <div></div>
+    <div class="progress">
+      <div class="progress-bar" style="width:25%"></div>
     </div>
     <br>
     <!-- COLOR -->
-    <div>
-      <div></div>
+    <div class="progress">
+      <div class="progress-bar bg-success" style="width:35%"></div>
     </div>
     <br>
     <!-- HEIGHT -->
-    <div>
-      <div></div>
+    <div class="progress" style="height:40px">
+      <div class="progress-bar bg-danger" style="width:45%"></div>
     </div>
     <br>
     <!-- STRIPED -->
-    <div>
-      <div></div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" style="width:55%"></div>
     </div>
     <br>
     <!-- ANIMATED -->
-    <div>
-      <div></div>
+    <div class="progress">
+      <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width:65%"></div>
     </div>
     <br>
     <!-- MULTIPLE BARS -->
-    <div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="progress-stacked">
+      <div class="progress" style="width:15%">
+        <div class="progress-bar bg-danger"></div>
+      </div>
+      <div class="progress" style="width:25%">
+        <div class="progress-bar bg-info"></div>
+      </div>
+      <div class="progress" style="width:35%">
+        <div class="progress-bar bg-warning"></div>
+      </div>
     </div>
+
     <br>
+
     <!-- EX WITH SCRIPT -->
+    <!-- wanneer je op de 'go' knop klikt zal de bar tot 100% vullen -->
+    <!-- script staat in script tags onder de html code incl. wat uitleg in comments -->
     <div class="progress">
       <div class="progress-bar" id="progressBar"></div>
     </div>
+    <br>
     <input type="button" value="go" id="progressButton">
 
-    
+    <script>
+      const progressBar = document.getElementById("progressBar");
+      const progressButton = document.getElementById("progressButton");
+
+      progressButton.addEventListener("click", UpdateProgress);
+
+      function UpdateProgress() {
+        let width = 0;
+        //als de bar al op 100% staat, eerst weer op nul plaatsen en dan opnieuw opvullen
+        if (progressBar.style.width == "100%") {
+          progressBar.style.width = "0%";
+          //met setTimeout laat je een function pas na x milliseconden starten
+          setTimeout(Interval, 1000);
+        } else {
+          //interval function laten lopen als de bar nog niet gevuld is
+          Interval();
+        }
+
+        function Interval() {
+          //met setInterval laat je een function lopen iedere x milliseconden
+          //gekoppeld aan een variabele hier zodat deze ook weer kan gestopt worden (in function UpdateBar)
+          let updateProgress = setInterval(UpdateBar, 100);
+        }
+
+        function UpdateBar() {
+          if (width >= 100) {
+            clearInterval(updateProgress);
+          } else {
+            //breedte van progressbar vergroten en ook cijfer dat getoond wordt mee vergroten
+            width++;
+            progressBar.style.width = width + "%";
+            progressBar.innerHTML = width + "%";
+          }
+        }
+      }
+    </script>
 
     <!-- EX2 https://jsfiddle.net/f6hLt9ak/2/ -->
     <!-- AUTOMATIC PAGE LOADER https://codebyzach.github.io/pace/ -->
