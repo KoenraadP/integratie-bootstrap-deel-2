@@ -186,10 +186,12 @@
     <br>
 
     <!-- VALIDATION -->
-    <form action="" id="loginForm" novalidate>
+    <!-- novalidate om default browser validatie boodschappen uit te schakelen -->
+    <form action="" id="login-form" novalidate>
       <div>
         <label class="form-label" for="username">Username</label>
         <input class="form-control" type="text" id="username" required>
+        <!-- valid-feedback en invalid-feedback zijn standaard onzichtbaar -->
         <div class="valid-feedback">Username OK!</div>
         <div class="invalid-feedback">Username verplicht!</div>
       </div>
@@ -202,6 +204,24 @@
       <input type="submit" value="Log in" class="btn btn-primary mt-3">
     </form>
 
+    <!-- script om validatie boodschappen te regelen -->
+    <script>
+      // form koppelen
+      const form = document.getElementById("login-form");
+
+      // submit event voor form
+      form.addEventListener("submit",function(e){
+        // controleren of aan alle HTML validatie vereisten voldaan werd
+        // in ons voorbeeld is dit enkel required
+        if (!form.checkValidity()){
+          // blokkeren dat form effectief doorgestuurd wordt
+          e.preventDefault();          
+        }
+        // bootstrap validatie 'tonen'
+        // dus tonen of een vakje goed of slecht ingevuld werd
+        form.classList.add("was-validated");
+      })
+    </script>
 
   </div>
   <!-- ./container -->
