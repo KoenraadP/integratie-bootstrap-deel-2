@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/393376cf44.js" crossorigin="anonymous"></script>
   <title>Bootstrap Sandbox</title>
 </head>
 
@@ -86,21 +87,27 @@
   <!--##################START HERE###################-->
 
   <!-- SIMPLE NAVBAR WITHOUT TOGGLER -->
-  <nav>
-    <div>
-      <a href="#">Navbar</a>
-      <ul>
+  <!-- vanaf bepaalde screensize 'expanden', dit betekent de links naast elkaar zetten -->
+  <nav class="navbar navbar-expand-sm">
+    <!-- beetje marge links en rechts, wil je meer marge dan gewoon container -->
+    <div class="container-fluid">
+      <!-- titel website -->
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- eigenlijke lijst met navigatie links -->
+      <!-- me-auto is om de items links te plaatsen -->
+      <!-- automatisch marge naar het 'einde' (end) toevoegen -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li class="nav-item">
         <li>
-          <a href="#">Home</a>
+          <a class="nav-link" href="#">About</a>
         </li>
-        <li>
-          <a href="#">About</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
         </li>
-        <li>
-          <a href="#">Services</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
     </div>
@@ -108,27 +115,246 @@
 
   <!-- NAVBAR WITH RESPONSIVE TOGGLE -->
 
+  <nav class="navbar navbar-expand-sm">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- knop met het 'hamburger' icoontje -->
+      <!-- eventueel met me-auto om links te plaatsen -->
+      <button class="navbar-toggler me-auto" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- extra div rond lijst plaatsen met id die vermeld wordt bij data-bs-target -->
+      <!-- deze div krijgt ook classes om aan te geven dat dit stuk verdwijnt 
+       onder de width threshold die aangegeven werd bij de <nav> -->
+      <div class="navbar-collapse collapse" id="navbar-content">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li class="nav-item">
+          <li>
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
 
   <!-- NAVBAR WITH FORM -->
 
+  <nav class="navbar navbar-expand-sm">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- knop met het 'hamburger' icoontje -->
+      <!-- eventueel met me-auto om links te plaatsen -->
+      <button class="navbar-toggler me-auto" data-bs-toggle="collapse" data-bs-target="#navbar-content-two">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- extra div rond lijst plaatsen met id die vermeld wordt bij data-bs-target -->
+      <!-- deze div krijgt ook classes om aan te geven dat dit stuk verdwijnt 
+       onder de width threshold die aangegeven werd bij de <nav> -->
+      <div class="navbar-collapse collapse" id="navbar-content-two">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li class="nav-item">
+          <li>
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+
+        <!-- d-flex om de form elementen naast elkaar te zetten -->
+        <form action="" class="d-flex">
+          <!-- placeholder is tekst die al in het vakje als voorbeeld staat -->
+          <input type="text" class="form-control me-2" placeholder="search">
+          <!-- icoontje van font awesome, script bovenaan ook nodig -->
+          <button class="btn btn-outline-primary">
+            <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
+      </div>
+
+    </div>
+  </nav>
+
 
   <!-- NAVBAR WITH DROPDOWN -->
+  <nav class="navbar navbar-expand-sm">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- knop met het 'hamburger' icoontje -->
+      <!-- eventueel met me-auto om links te plaatsen -->
+      <button class="navbar-toggler me-auto" data-bs-toggle="collapse" data-bs-target="#navbar-content-three">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- extra div rond lijst plaatsen met id die vermeld wordt bij data-bs-target -->
+      <!-- deze div krijgt ook classes om aan te geven dat dit stuk verdwijnt 
+       onder de width threshold die aangegeven werd bij de <nav> -->
+      <div class="navbar-collapse collapse" id="navbar-content-three">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li class="nav-item">
+          <!-- dit item is de dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Link 1</a></li>
+              <li><a class="dropdown-item" href="#">Link 2</a></li>
+              <li><a class="dropdown-item" href="#">Link 3</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+
+        <!-- d-flex om de form elementen naast elkaar te zetten -->
+        <form action="" class="d-flex">
+          <!-- placeholder is tekst die al in het vakje als voorbeeld staat -->
+          <input type="text" class="form-control me-2" placeholder="search">
+          <!-- icoontje van font awesome, script bovenaan ook nodig -->
+          <button class="btn btn-outline-primary">
+            <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
+      </div>
+
+    </div>
+  </nav>
 
 
   <!-- COLORS -->
-
+  <!-- theme op dark maakt alles licht, bg-dark class nog nodig voor donkere achtergrond -->
+  <!-- verander de bg-class naar wens voor andere kleuren -->
+  <nav class="navbar navbar-expand-sm bg-dark" data-bs-theme="dark">
+    <!-- beetje marge links en rechts, wil je meer marge dan gewoon container -->
+    <div class="container-fluid">
+      <!-- titel website -->
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- eigenlijke lijst met navigatie links -->
+      <!-- me-auto is om de items links te plaatsen -->
+      <!-- automatisch marge naar het 'einde' (end) toevoegen -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li class="nav-item">
+        <li>
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <br>
   <br>
 
   <!-- FIXED TOP -->
-
+  <nav class="navbar navbar-expand-sm fixed-top">
+    <!-- beetje marge links en rechts, wil je meer marge dan gewoon container -->
+    <div class="container-fluid">
+      <!-- titel website -->
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- eigenlijke lijst met navigatie links -->
+      <!-- me-auto is om de items links te plaatsen -->
+      <!-- automatisch marge naar het 'einde' (end) toevoegen -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li class="nav-item">
+        <li>
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- FIXED BOTTOM -->
+  <nav class="navbar navbar-expand-sm fixed-bottom">
+    <!-- beetje marge links en rechts, wil je meer marge dan gewoon container -->
+    <div class="container-fluid">
+      <!-- titel website -->
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- eigenlijke lijst met navigatie links -->
+      <!-- me-auto is om de items links te plaatsen -->
+      <!-- automatisch marge naar het 'einde' (end) toevoegen -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li class="nav-item">
+        <li>
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
 
   <!-- STICKY TOP -->
-
+  <nav class="navbar navbar-expand-sm sticky-top">
+    <!-- beetje marge links en rechts, wil je meer marge dan gewoon container -->
+    <div class="container-fluid">
+      <!-- titel website -->
+      <a class="navbar-brand" href="#">Navbar</a>
+      <!-- eigenlijke lijst met navigatie links -->
+      <!-- me-auto is om de items links te plaatsen -->
+      <!-- automatisch marge naar het 'einde' (end) toevoegen -->
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li class="nav-item">
+        <li>
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <br>
   <br>
